@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Privacy Policy - VCN Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="assests/logo/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assests/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assests/logo/favicon-16x16.png">
+<style>
+  /* MODAL BACKDROP */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* HIDE CLASS */
+.hidden {
+  display: none;
+}
+
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  position: relative;
+  animation: scaleIn .2s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: none;
+  background: #eee;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* FORM */
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.form-control {
+  padding-left: 40px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+/* MOBILE OPTIMIZED */
+@media(max-width:480px) {
+  .login-card {
+    margin: 10px;
+  }
+}
+
+</style>
+</head>
+<body>
+<!-- ================= NAVBAR ================= -->
+<div id="navbar"></div>
+
+<section class="py-5">
+<div class="container">
+<h3 class="fw-semibold mb-4">Privacy Policy</h3>
+
+<p>We at VCN ON FIBER are committed to protect our customers' personal information and/or sensitive personal data and strive to maintain the privacy of your personal information.</p>
+
+<p>For your information, "Personal information" is any information that can be used by itself to uniquely identify, contact, or locate a person, or can be used with information available from other sources to uniquely identify an individual. For the purpose of this policy, sensitive personal data or information has been considered as a part of personal information. VCN does collect your personal information for a variety of regulatory and business purposes. These include, but are not limited to:</p>
+ <p>>Verify your identity</p>
+ <p>>Complete transactions effectively and bill for products and services</p>
+ <p>>Respond to your request for service or assistance</p>
+ <p>>Perform market analysis, market research, business and operational analysis</p>
+ <p>>Provide, maintain and improve our products and services</p>
+ <p>>Anticipate and resolve issues and concerns with our products and services</p>
+ <p>>Promote and market our products and services which we consider may be of interest to you and may benefit you; and</p>
+ <p>>Ensure adherence to legal and regulatory requirements for prevention and detection of frauds and crimes.</p>
+<p>VCN Privacy Policy is designed and developed to address the privacy and security of your personal information provided to us. This Privacy Policy describes the personal information which we may collect and provides our approach towards handling or dealing with the same. The policy is designed to make you understand:</p>
+ <p>>kinds of personal information that may be collected by us</p>
+ <p>>measures taken by us to ensure its privacy and security</p>
+ <p>>duration for which when it may be retained by us; and</p>
+ <p>>how you may access and control its use</p>
+<p><b>VCN reserves the right ?</b> to amend or modify this Privacy Policy at any time, as and when the need arises. We request you to visit our website www.AAAAAA.in periodically for contemporary information and changes.</p>
+</div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4">
+        <h6 class="fw-semibold">VCN Fiber Net Services</h6>
+        <p class="small text-muted">
+          Local fiber broadband and CCTV installation services.
+        </p>
+      </div>
+
+    <div class="col-md-4">
+        <h6 class="fw-semibold">Contact</h6>
+        <p class="small text-muted mb-1">📞 +91-9885437747</p>
+        <p class="small text-muted mb-1">✉ vcnfibernet@gmail.com</p>
+        <p class="small text-muted">📍Tapeswaram ,Dulla, Andhra Pradesh</p>
+      </div>
+
+      <div class="col-md-4">
+        <h6 class="fw-semibold">Legal</h6>
+        <ul class="list-unstyled small">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr>
+    <p class="text-center small text-muted mb-0">
+      © 2026 VCN Services. All rights reserved.
+    </p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+fetch("/partials/navbar.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("navbar").innerHTML = html;
+  });
+</script>
+<script src="js/app.js"></script>
+
+
+</body>
+</html>

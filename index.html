@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>VCN Fiber Net & CCTV Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="assests/logo/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assests/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assests/logo/favicon-16x16.png">
+
+<style>
+  /* MODAL BACKDROP */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* HIDE CLASS */
+.hidden {
+  display: none;
+}
+
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  position: relative;
+  animation: scaleIn .2s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: none;
+  background: #eee;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* FORM */
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.form-control {
+  padding-left: 40px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+/* MOBILE OPTIMIZED */
+@media(max-width:480px) {
+  .login-card {
+    margin: 10px;
+  }
+}
+
+</style>
+
+
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+
+    <!-- LOGO -->
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="assests/logo/logoo.png" class="navbar-logo" alt="VCN Fibrenet">
+    </a>
+
+    <!-- MOBILE TOGGLE BUTTON -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu"
+            aria-controls="navbarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+
+        <li class="nav-item">
+          <a class="nav-link" href="services.html">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+        <!-- LOGIN BUTTON -->
+        <li class="nav-item ms-lg-3" id="loginNav">
+          <button class="btn btn-outline-primary px-4" data-toggle="modal" data-target="#loginModal"
+                  onclick="showLogin()">
+            Login
+          </button>
+        </li>
+
+        <!-- DASHBOARD BUTTON -->
+        <li class="nav-item ms-lg-3 d-none" id="dashboardNav">
+          <button class="btn btn-success px-4"
+                  onclick="location.href='dashboard.html'">
+            Dashboard
+          </button>
+        </li>
+
+        <!-- LOGOUT BUTTON -->
+        <li class="nav-item ms-lg-3 d-none" id="logoutNav">
+          <button class="btn btn-danger px-4"
+                  onclick="logout()">
+            Logout
+          </button>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="login-overlay hidden">
+  <div class="login-card">
+
+    <button class="close-btn" onclick="hideLogin()">×</button>
+
+    <h3 class="title">Customer Login</h3>
+
+    <div class="form-group">
+      <span class="input-icon">👤</span>
+      <input id="usernameInput" type="text" class="form-control" placeholder="Username">
+    </div>
+
+    <div class="form-group">
+      <span class="input-icon">🔒</span>
+      <input id="passwordInput" type="password" class="form-control" placeholder="Password">
+    </div>
+
+    <button id="loginBtn" class="btn btn-primary w-100" onclick="login()">Login</button>
+    <button class="btn btn-light w-100 mt-2" onclick="hideLogin()">Cancel</button>
+
+  </div>
+</div>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="fw-semibold">Reliable Fiber Internet & CCTV Solutions</h1>
+        <p class="mt-3 text-muted">
+          High-speed fiber connectivity and professional CCTV installation for homes and businesses.
+        </p>
+        <a href="services.html" class="btn btn-primary mt-3">Explore Services</a>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+  <div class="logo-wrapper hero-logo">
+
+    <div class="logo-text">
+      <span class="letter-v">V</span>
+      <span class="letter-c">C</span>
+      <span class="letter-n">N</span>
+
+      <div class="wifi-icon">
+        <div class="wifi-signal"></div>
+        <div class="wifi-signal"></div>
+        <div class="wifi-signal"></div>
+      </div>
+    </div>
+
+    <div class="orbital-system">
+      <div class="orbit orbit-1"><div class="electron electron-1"></div></div>
+      <div class="orbit orbit-2"><div class="electron electron-2"></div></div>
+      <div class="orbit orbit-3"><div class="electron electron-3"></div></div>
+      <div class="nucleus"></div>
+    </div>
+
+    <div class="fibrenet-text">FIBERNET</div>
+    <div class="swoosh"></div>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h3 class="text-center fw-semibold mb-4">Our Services</h3>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card service-card h-100">
+          <div class="card-body text-center">
+            <h6 class="fw-semibold">Fiber Internet</h6>
+            <p class="text-muted small">Fast and stable broadband connectivity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card service-card h-100">
+          <div class="card-body text-center">
+            <h6 class="fw-semibold">CCTV Installation</h6>
+            <p class="text-muted small">Complete security camera solutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card service-card h-100">
+          <div class="card-body text-center">
+            <h6 class="fw-semibold">Maintenance</h6>
+            <p class="text-muted small">Ongoing technical support & servicing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card service-card h-100">
+          <div class="card-body text-center">
+            <h6 class="fw-semibold">Annual AMC</h6>
+            <p class="text-muted small">Affordable yearly maintenance contracts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= services ================= -->
+
+<!--section class="plans">
+  <h2>Internet Plans</h2>
+
+  <div class="plan-card">
+  <h3>30 Mbps Unlimited</h3>
+  <p>₹500 / Month</p>
+  <button onclick="selectPlan(500)">Select Plan</button>
+</div--
+
+<section class="container py-5" id="plans">
+
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">Choose Your Plan</h2>
+    <p class="text-muted">High speed internet & cable packages</p>
+  </div>
+
+  <!-- Tabs --
+  <div class="text-center mb-4">
+    <button class="btn btn-outline-primary me-2" onclick="loadPlans('internet')">Internet</button>
+    <button class="btn btn-outline-primary me-2" onclick="loadPlans('cable')">Cable</button>
+    <button class="btn btn-outline-primary" onclick="loadPlans('combo')">Combo</button>
+  </div>
+
+  <!-- Plans Container --
+  <div class="row g-4" id="plansContainer"></div>
+
+</section--
+<section class="container py-5">
+  <h3 class="text-center mb-4">🔥 Our Popular Plans</h3>
+
+  <div class="row g-4" id="plansContainer"></div>
+
+</section>
+
+<link rel="stylesheet" href="/css/plans.css">
+<script src="/js/plans.js"></script--
+<section class="plans-section">
+  <h2 class="plans-title">📦 Our Plans</h2>
+
+  <!-- FILTER TABS --
+  <div class="plan-tabs">
+    <button class="tab active" data-filter="all">All</button>
+    <button class="tab" data-filter="cable">Cable TV</button>
+    <button class="tab" data-filter="internet">Internet</button>
+    <button class="tab" data-filter="combo">Combo</button>
+  </div>
+
+  <!-- SCROLL CONTAINER --
+<div class="plans-wrapper">
+
+  <!-- LEFT ARROW --
+  <button class="scroll-btn left" onclick="scrollPlans(-1)">❮</button>
+
+  <!-- SCROLL CONTAINER --
+  <div class="plans-container" id="plansContainer">
+
+    <!-- CARD --
+    <div class="plan-card cable popular">
+      <span class="badge">POPULAR</span>
+      <h3>SD Pack</h3>
+      <p>300+ SD Channels</p>
+      <div class="price">₹250</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card cable">
+      <h3>HD Pack</h3>
+      <p>300+ HD Channels</p>
+      <div class="price">₹300</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+     <div class="plan-card internet">
+      <h3>20 Mbps</h3>
+      <p>300GB Data</p>
+      <div class="price">₹300</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card internet popular">
+      <h3>20 Mbps</h3>
+      <p>Unlimited Data</p>
+      <div class="price">₹400</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+
+     <div class="plan-card internet">
+      <h3>30 Mbps</h3>
+      <p>Unlimited Data</p>
+      <div class="price">₹500</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card internet">
+      <h3>40 Mbps</h3>
+      <p>Unlimited Data</p>
+      <div class="price">₹600</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card internet">
+      <h3>100 Mbps</h3>
+      <p>Unlimited Data</p>
+      <div class="price">₹800</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+
+    <div class="plan-card combo">
+      <h3>Combo SDpack</h3>
+      <p>15 Mbps Unlimited + Cable T.V</p>
+      <div class="price">₹450</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+        <div class="plan-card combo">
+      <h3>Combo SDpack</h3>
+      <p>20 Mbps Unlimited + Cable T.V</p>
+      <div class="price">₹500</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+    <div class="plan-card combo">
+      <h3>Combo SDpack</h3>
+      <p>25 Mbps Unlimited + Cable T.V</p>
+      <div class="price">₹550</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+        <div class="plan-card combo">
+      <h3>Combo SDpack</h3>
+      <p>40 Mbps Unlimited + Cable T.V</p>
+      <div class="price">₹650</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+        <div class="plan-card combo">
+      <h3>Combo SDpack</h3>
+      <p>100 Mbps Unlimited + Cable T.V</p>
+      <div class="price">₹850</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+
+
+
+
+    <div class="plan-card combo">
+      <h3>Combo HD</h3>
+      <p>15 Mbps Unlimited + HD</p>
+      <div class="price">₹500</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+        <div class="plan-card combo">
+      <h3>Combo HD</h3>
+      <p>20 Mbps Unlimited + HD</p>
+      <div class="price">₹550</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+        <div class="plan-card combo">
+      <h3>Combo HD</h3>
+      <p>25 Mbps Unlimited + HD</p>
+      <div class="price">₹600</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+        <div class="plan-card combo">
+      <h3>Combo HD</h3>
+      <p>40 Mbps Unlimited + HD</p>
+      <div class="price">₹700</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+
+    <div class="plan-card combo">
+      <h3>Combo HD</h3>
+      <p>100 Mbps Unlimited + HD</p>
+      <div class="price">₹900</div>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+
+  </div>
+    <button class="scroll-btn right" onclick="scrollPlans(1)">❯</button>
+</div>
+
+
+
+</section>
+<link rel="stylesheet" href="/css/plans.css">
+<script src="js/plans.js"></script-->
+
+<!-- Replace your existing plans section with this enhanced version -->
+<section class="plans-section">
+  <div class="container-fluid px-0">
+    <div class="text-center mb-5">
+      <h2 class="plans-title"><center>Premium Plans</center></h2>
+      <p class="lead text-muted">Choose the perfect plan for your home or business</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="plan-tabs">
+      <button class="tab active" data-filter="all">
+        <span>All Plans</span>
+      </button>
+      <button class="tab" data-filter="cable">
+        <span>Cable TV</span>
+      </button>
+      <button class="tab" data-filter="internet">
+        <span>Internet</span>
+      </button>
+      <button class="tab" data-filter="combo">
+        <span>Combo Plans</span>
+      </button>
+    </div>
+
+    <!-- PLANS CONTAINER -->
+    <div class="plans-wrapper">
+      <button class="scroll-btn left" onclick="scrollPlans(-1)" aria-label="Scroll left">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="plans-container" id="plansContainer">
+        <!-- Plans will be dynamically inserted here -->
+      </div>
+
+      <button class="scroll-btn right" onclick="scrollPlans(1)" aria-label="Scroll right">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- SCROLL INDICATORS (Mobile) -->
+    <div class="scroll-indicators"></div>
+
+    <!-- CTA SECTION -->
+    
+  </div>
+</section>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Add the enhanced CSS -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/plans.css">
+
+<!-- Add the enhanced JavaScript -->
+<script src="js/plans.js"></script>
+
+
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-md-6">
+        <h4 class="fw-semibold">Why Choose VCN Services?</h4>
+        <ul class="mt-3 list-unstyled">
+          <li>✔ Professional Installation Team</li>
+          <li>✔ 24/7 Customer Support</li>
+          <li>✔ Affordable Pricing</li>
+          <li>✔ Secure Online Payments via Paytm</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 text-center">
+        <img src="assets/images/support.png" class="img-fluid" alt="">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAYMENT CTA ================= -->
+<section class="py-5 bg-primary text-white text-center">
+  <div class="container">
+    <h4 class="fw-semibold">Pay Your Bills Securely Online</h4>
+    <p class="mb-3">Fast and safe payments powered by Paytm.</p>
+     <button class="btn btn-light px-4" data-toggle="modal" data-target="#loginModal"
+                  onclick="homePayNow()">
+            Pay Now
+          </button>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4">
+        <h6 class="fw-semibold">VCN Fiber Net Services</h6>
+        <p class="small text-muted">
+          Local fiber broadband and CCTV installation services.
+        </p>
+      </div>
+
+    <div class="col-md-4">
+        <h6 class="fw-semibold">Contact</h6>
+        <p class="small text-muted mb-1">📞 +91-9885437747</p>
+        <p class="small text-muted mb-1">✉ vcnfibernet@gmail.com</p>
+        <p class="small text-muted">📍Tapeswaram ,Dulla, Andhra Pradesh</p>
+      </div>
+
+      <div class="col-md-4">
+        <h6 class="fw-semibold">Legal</h6>
+        <ul class="list-unstyled small">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr>
+    <p class="text-center small text-muted mb-0">
+      © 2026 VCN Services. All rights reserved.
+    </p>
+  </div>
+</footer>
+<!-- 🔐 Login Modal -->
+<!-- LOGIN MODAL -->
+
+<!------------------------------------------------------------------------>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/logo.js"></script>
+<link rel="stylesheet" href="plans.css">
+
+
+
+
+</body>
+</html>

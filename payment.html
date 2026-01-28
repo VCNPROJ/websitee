@@ -1,0 +1,14 @@
+<h2>Payment Page</h2>
+<p>Amount: <span id="amount"></span></p>
+
+<button onclick="makePayment()">Proceed Payment</button>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("amount").innerText = "₹" + params.get("amount");
+
+function makePayment() {
+  alert("Payment simulation successful!");
+  window.location.href = "/payment-success.html";
+}
+</script>
